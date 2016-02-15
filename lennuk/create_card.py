@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 import socket, ssl, pprint
 
@@ -22,16 +23,15 @@ ssl_sock.write('''
 {
   "USER": "ALEXEY",
   "HOSTNAME": "#PM",
-  "CURRENTACCOUNT": {
+  "CARD": {
     "ACTION": "INSERT",
-    "CUSTOMERNUMBER": "000363",
-    "PREFERREDCURRENCY": "EUR",
-    "ACCOUNT": [
-      {
-        "ACTION": "INSERT",
-        "CURRENCY": "EUR"
-      }
-    ]
+    "CARDHOLDERNUMBER": "000514",
+    "CLASSID": "2",
+    "CARDTYPE": "3",
+    "MONTHLYCASHLIMIT": "140",
+    "MONTHLYLIMIT": "140",
+    "CURRENCY": "EUR",
+    "ACCOUNTNUMBER": "4541000000785"
   }
 }
 '''.encode()

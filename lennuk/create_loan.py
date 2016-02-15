@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 import socket, ssl, pprint
 
@@ -18,44 +19,30 @@ print(ssl_sock.cipher())
 print(pprint.pformat(ssl_sock.getpeercert()))
 
 ssl_sock.write('''
+
 {
   "USER": "ALEXEY",
   "HOSTNAME": "#PM",
-  "CUSTOMER": {
+  "LOAN": {
     "ACTION": "INSERT",
-    "CUSTOMERCLASS": 1,
-    "PERSONALID": "0142999489",
-    "PERSONALIDCOUNTRYCODE": "PL",
-    "FIRSTNAME": "Michaelsk",
-    "LASTNAME": "Malitov",
-    "DATEOFBIRTH": "17.10.1991",
-    "SEX": 0,
-    "R_LOCATION": "Jeschrt",
-    "R_POSTALCODE": "12345",
-    "R_PLACE": "Seene 4-15",
-    "R_COUNTRYCODE": "PL",
-    "R_COUNTRY": "Poland",
-    "LOCATIONCODE": "0",
-    "EMAIL": "info@seene.pl",
-    "PHONE2": "5212345",
-    "CUSTOMERDOCUMENT": [
+    "CUSTOMERNUMBER": "000514",
+    "CURRENTACCOUNT": "4578600051408",
+    "DECISIONTYPE": 7,
+    "EB_LOANPURPOSE": 12,
+    "REPAYMENTTYPE": 5,
+    "BANKCOMMENTS": "Demo",
+    "MONTHPAYMENT": "12",
+    "MINMONTHPAYMENT": "0",
+    "LOANCHANGES": [
       {
         "ACTION": "INSERT",
-        "DOCUMENTTYPE": "102",
-        "DOCUMENTNUMBER": "AL003298",
-        "DOCUMENTISSUEDBY": "PPL",
-        "DOCUMENTISSUEDON": "14.09.2010",
-        "EXPIRYDATE": "31.01.2016"
-      },
-      {
-        "ACTION": "INSERT",
-        "DOCUMENTTYPE": "102",
-        "DOCUMENTNUMBER": "ABZ07289",
-        "DOCUMENTISSUEDBY": "PPLK",
-        "DOCUMENTISSUEDON": "16.08.2015",
-        "EXPIRYDATE": "31.12.2019"
+        "LOANLIMIT": 100,
+        "INTERESPAYMENTSHIFT": 1,
+        "INTERESTPERIODSHIFT": 3
       }
-    ]
+    ],
+    "LOANSUBTYPE": "401",
+    "LOANMANAGER": "ALEXEY"
   }
 }
 '''.encode()
@@ -65,6 +52,7 @@ data = ssl_sock.read(8192)
 
 # print("Got from server",data)
 print(data.decode())
+ssl_sock.close()
 
 if False: # from the Python 2.7.3 docs
     # Set a simple HTTP request -- use httplib in actual code.
